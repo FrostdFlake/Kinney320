@@ -43,7 +43,7 @@ const BirthdayForm = ({ onAddBirthday, editingBirthday }) => {
                 </label>
                 <label>
                     Relationship:
-                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                    <input type="text" value={relationship} onChange={(e) => setRelationship(e.target.value)} />
                 </label>
                 <button type="submit">{editingBirthday ? 'Save Changes' : 'Add Birthday'}</button>
             </form>
