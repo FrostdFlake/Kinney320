@@ -1,7 +1,7 @@
 // src/components/BirthdayForm.jsx
 import React, { useState, useEffect } from 'react';
 
-const BirthdayForm = ({ onAddBirthday, editingBirthday }) => {
+const BirthdayForm = ({ onAddBirthday, editingBirthday, onSaveChanges }) => {
     const [name, setName] = useState('');
     const [date, setDate] = useState('');
     const [relationship, setRelationship] = useState('');
@@ -16,17 +16,18 @@ const BirthdayForm = ({ onAddBirthday, editingBirthday }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const updatedBirthday = { name, date, relationship };
+
         if (editingBirthday) {
-            onAddBirthday({ name, date, relationship });
-            setName('');
-            setDate('');
-            setRelationship('');
+            updatedBirthday.id = editingBirthday.id;
+            onSaveChanges(updatedBirthday);
         } else {
-            onAddBirthday({ name, date, relationship });
-            setName('');
-            setDate('');
-            setRelationship('');
+            onAddBirthday(updatedBirthday);
         }
+
+        setName('');
+        setDate('');
+        setRelationship('');
     };
 
     return (

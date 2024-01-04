@@ -15,10 +15,22 @@ function App() {
     setEditingBirthday(birthday);
   };
 
+  const saveChanges = (editedBirthday) => {
+    const updatedBirthdays = [...birthdays];
+    const index = updatedBirthdays.findIndex((b) => b.id === editedBirthday.id);
+
+    if (index !== -1) {
+      updatedBirthdays[index] = editedBirthday;
+      setBirthdays(updatedBirthdays);
+    }
+
+    setEditingBirthday(null);
+  };
+
   return (
     <div className="App">
       <h1>Birthday Tracker App</h1>
-      <BirthdayForm onAddBirthday={addBirthday} />
+      <BirthdayForm onAddBirthday={addBirthday} editingBirthday={editingBirthday} saveChanges={saveChanges} />
       <BirthdayList birthdays={birthdays} onEditBirthday={editBirthday} />
     </div>
   );
