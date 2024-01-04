@@ -1,4 +1,4 @@
-// src/components/BirthdayList.js
+// src/components/BirthdayList.jsx
 import React from 'react';
 
 const BirthdayList = ({ birthdays, onEditBirthday }) => {

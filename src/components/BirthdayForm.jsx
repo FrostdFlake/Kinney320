@@ -1,31 +1,31 @@
-// src/components/BirthdayForm.js
+// src/components/BirthdayForm.jsx
 import React, { useState, useEffect } from 'react';
 
 const BirthdayForm = ({ onAddBirthday, editingBirthday }) => {
     const [name, setName] = useState('');
     const [date, setDate] = useState('');
+    const [relationship, setRelationship] = useState('');
 
     useEffect(() => {
         if (editingBirthday) {
             setName(editingBirthday.name);
             setDate(editingBirthday.date);
+            setRelationship(editingBirthday.relationship);
         }
     }, [editingBirthday]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (editingBirthday) {
-            // Editing existing birthday
-            // You can implement the logic to update the birthday in the state
-            // For simplicity, we're just clearing the editing state here
-            onAddBirthday({ name, date });
+            onAddBirthday({ name, date, relationship });
             setName('');
             setDate('');
+            setRelationship('');
         } else {
-            // Adding new birthday
-            onAddBirthday({ name, date });
+            onAddBirthday({ name, date, relationship });
             setName('');
             setDate('');
+            setRelationship('');
         }
     };
 
