@@ -8,7 +8,7 @@ const BirthdayList = ({ birthdays, onEditBirthday }) => {
             <ul>
                 {birthdays.map((birthday) => (
                     <li key={birthday.id}>
-                        {birthday.name}'s birthday on {birthday.date}
+                        {birthday.name}'s birthday on {birthday.date}.({birthday.relationship})
                         <button onClick={() => onEditBirthday(birthday)}>Edit</button>
                     </li>
                 ))}

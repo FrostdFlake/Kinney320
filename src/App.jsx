@@ -16,14 +16,9 @@ function App() {
   };
 
   const saveChanges = (editedBirthday) => {
-    const updatedBirthdays = [...birthdays];
-    const index = updatedBirthdays.findIndex((b) => b.id === editedBirthday.id);
-
-    if (index !== -1) {
-      updatedBirthdays[index] = editedBirthday;
-      setBirthdays(updatedBirthdays);
-    }
-
+    setBirthdays((prevBirthdays) =>
+      prevBirthdays.map((b) => (b.id === editedBirthday.id ? editedBirthday : b))
+    );
     setEditingBirthday(null);
   };
 
